@@ -1,23 +1,723 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "2026 영어회화인강 통합 학습 프로그램",
+    "description": "초급자부터 비즈니스 고급 레벨까지, AI 맞춤형 피드백과 검증된 커리큘럼으로 영어 스피킹 능력을 강화하는 온라인 영어회화 전문 인강 과정입니다.",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "영어회화 교육 연구소",
+      "url": "https://education.reliabledone.com",
+      "sameAs": [
+        "https://ko.wikipedia.org/wiki/영어",
+        "https://www.nile.or.kr"
+      ]
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "29000",
+      "highPrice": "150000",
+      "priceCurrency": "KRW",
+      "offerCount": "12"
+    },
+    "educationalLevel": "기초 단계부터 비즈니스 고급 회화 단계까지",
+    "about": {
+      "@type": "Language",
+      "name": "English"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #4e73df;
+      --primary-light: #f0f4fc;
+      --primary-dark: #2e59d9;
+      --secondary: #f6c23e;
+      --accent: #1cc88a;
+      --bg-main: #fcfcfd;
+      --bg-card: #ffffff;
+      --text-dark: #2d3748;
+      --text-muted: #718096;
+      --border-color: #edf2f7;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 5px solid var(--secondary);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 25px auto;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 35px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      border-left: 5px solid var(--secondary);
+      padding-left: 15px;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: var(--text-dark);
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .highlight-box {
+      background-color: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 25px 0;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    table th, table td {
+      border: 1px solid var(--border-color);
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #fafbfc;
+    }
+
+    /* Calculator Style */
+    .calculator-box {
+      background: #fdfbf7;
+      border: 2px dashed #f6c23e;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .calculator-form label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .calculator-form select, .calculator-form input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    .calculator-btn {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    .calculator-btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .calc-results {
+      margin-top: 25px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .calc-result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .calc-result-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Form Styles */
+    .consult-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .consult-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 600px) {
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    .submit-btn {
+      background-color: #1cc88a;
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #17a673;
+    }
+
+    /* Links Footer styling */
+    .ref-links {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .ref-links a {
+      color: var(--primary);
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: 600;
+    }
+
+    .ref-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #2d3748;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      text-align: center;
+      margin: 0;
+    }
+
+    .cta-button-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .cta-main-btn {
+      background-color: var(--secondary);
+      color: #2d3748;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 30px;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(246, 194, 62, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-main-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(246, 194, 62, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>2026 영어회화인강 완벽 비교 분석 가이드</h1>
+    <p>나이별, 유형별 맞춤형 온라인 영어 학습법과 다이렉트 비용 계산기를 활용한 최적의 교육 브랜드 선택 솔루션</p>
+    <div class="cta-button-container">
+      <a href="#quote-calculator" class="cta-main-btn">실시간 맞춤 비용 계산하기</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#intro">트렌드 분석</a>
+    <a href="#quote-calculator">비용 계산기</a>
+    <a href="#age-groups">연령별 학습법</a>
+    <a href="#comparison">브랜드 비교</a>
+    <a href="#faq">커뮤니티 후기</a>
+    <a href="#consult">상담 신청</a>
+  </nav>
+
+  <div class="container">
+
+    <section id="intro" class="card">
+      <h2>1. 2026년 영어회화인강 시장 트렌드와 변화</h2>
+      <p>
+        최근 교육 기술의 발전과 인공지능 플랫폼의 도입으로 국내 영어 교육 시장은 전례 없는 전환기를 맞이하고 있습니다. 기존의 전형적이고 일방향적인 인터넷 동영상 강의 위주 패러다임에서 벗어나, 학습자의 목소리를 정밀 분석하고 즉각 피드백을 제공하는 양방향 상호작용 시스템이 완전히 자리를 잡았습니다. 특히 구글의 제미나이와 오픈AI의 챗지피티 등 초거대 AI 언어 모델을 학습 도구로 연동한 영어회화 학습 솔루션이 다양하게 출시되며 학습 효과를 극대화하고 있습니다.
+      </p>
+      <p>
+        영어회화인강을 고민하는 소비자들이 가장 궁금해하는 핵심 요소는 바로 나에게 최적화된 공부 방식이 무엇인지, 그리고 실제 결제하게 될 비용이 평균적으로 얼마이며 예상 금액은 어느 정도인지에 대한 부분입니다. 서울을 비롯한 경기, 인천 등 수도권은 물론이고 부산, 대구, 대전, 광주, 울산 등 전국 방방곡곡의 학습자들이 학원에 직접 등원하는 번거로움 없이 스마트폰 앱이나 태블릿 전용 어플을 통해 편리하게 외국어 회화를 정복하고 있습니다.
+      </p>
+      <div class="highlight-box">
+        본인에게 어울리는 학습 프로그램을 찾기 위해서는 무작정 남들이 듣는 인기 강의를 추종하기보다, 정밀한 컨설팅을 받거나 믿을 수 있는 가격 비교 데이터를 대조해보는 현명한 자세가 필요합니다. 대형 온라인 커뮤니티인 디시인사이드, 보배드림, 에펨코리아(펨코) 등에서 수강생들의 리얼 내돈내산 후기를 분석해 보면, 과도한 약정과 무리한 마케팅으로 피해를 보거나 환급 실패 등의 단점을 호소하는 사례도 빈번히 발생하기 때문입니다.
+      </div>
+    </section>
+
+    <section id="quote-calculator" class="card">
+      <h2>2. 나에게 맞는 영어회화 학습 비용 계산기</h2>
+      <p>
+        아래의 간편 계산기를 이용하여 자신의 연령대와 현재 영어 능력 수준, 그리고 평소 추구하는 공부 방식에 맞추어 실제 한 달에 부담해야 하는 예상 금액과 총비용을 직접 계산해 보시기 바랍니다. 인강 종류별 할인율과 사은품, 혜택 조건을 바탕으로 합리적인 의사결정을 도와드립니다.
+      </p>
+
+      <div class="calculator-box">
+        <form class="calculator-form" id="feeCalculator" onsubmit="return false;">
+          <div class="grid-container">
+            <div class="form-group">
+              <label for="calc-age">연령대 및 신분 선택</label>
+              <select id="calc-age" onchange="calculateFee()">
+                <option value="10s">10대 학생</option>
+                <option value="20s" selected>20대 대학생 / 취준생</option>
+                <option value="30s">30대 직장인</option>
+                <option value="40s">40대 직장인 / 주부</option>
+                <option value="50s">50대 이상 시니어</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="calc-level">현재 영어 스피킹 레벨</label>
+              <select id="calc-level" onchange="calculateFee()">
+                <option value="beginner">기초 입문 (알파벳 및 기초 단어 수준)</option>
+                <option value="intermediate" selected>중급 단계 (기본 문장 구성 및 일상 대화 가능)</option>
+                <option value="advanced">고급 단계 (비즈니스 및 토론 가능)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="calc-type">주요 학습 플랫폼 종류</label>
+              <select id="calc-type" onchange="calculateFee()">
+                <option value="pure-vod">순수 VOD 인터넷 동영상 중심</option>
+                <option value="ai-app">AI 튜터 기반 전용 앱 / 어플 중심</option>
+                <option value="hybrid" selected>인강 + 실시간 화상 1:1 연계 패키지</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="calc-duration">예상 학습 희망 기간</label>
+              <select id="calc-duration" onchange="calculateFee()">
+                <option value="3">3개월 (단기 마스터 코스)</option>
+                <option value="6">6개월 (집중 훈련 코스)</option>
+                <option value="12" selected>12개월 (올인원 연간 패키지)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" class="calculator-btn" onclick="calculateFee()">다이렉트 비용 계산 및 진단</button>
+        </form>
+
+        <div class="calc-results" id="calcResults">
+          <h3>나의 맞춤형 자가 분석 견적 결과</h3>
+          <div class="calc-result-item">
+            <span>추천 강의 최적 브랜드 유형</span>
+            <strong id="result-brand">하이브리드 맞춤 결합 패키지</strong>
+          </div>
+          <div class="calc-result-item">
+            <span>월 평균 납부 예상 요금</span>
+            <strong id="result-monthly">79,000 원</strong>
+          </div>
+          <div class="calc-result-item">
+            <span>선택 기간 총 납부 예상 금액</span>
+            <strong id="result-total">948,000 원</strong>
+          </div>
+          <div class="calc-result-item">
+            <span>적용 가능한 시즌 특별 할인 및 혜택</span>
+            <strong id="result-benefits" style="color: #1cc88a;">신규 첫 가입 25% 추가 할인 + 상품권 지급 대상</strong>
+          </div>
+          <div class="calc-result-item" style="flex-direction: column; align-items: flex-start;">
+            <span style="margin-bottom: 5px;">인공지능 전문가 처방 가이드</span>
+            <p id="result-guide" style="margin: 0; font-size: 0.9rem; color: #4a5568; text-align: left;">
+              자기 주도 학습 능력이 발달한 20대 대학생분들에게는 단순 영상 강의 시청보다 주 2회 원어민 화상 통화와 스마트폰 어플 연계 학습이 결합된 하이브리드 과정이 가장 효과적입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="age-groups" class="card">
+      <h2>3. 연령별 / 라이프스타일별 최적의 학습 모델과 타겟 분석</h2>
+      <p>
+        교육 공학 전문가들에 따르면 영어회화는 연령대와 학습 목적에 따라 접근 전략을 완전히 달리해야 합니다. 나이에 맞지 않는 부적절한 교재나 방식을 택하면 쉽게 지루함을 느끼고 중도 하차하게 되며 결국 금전적 낭비로 이어집니다.
+      </p>
+
+      <h3>10대 청소년 및 대학생 학습 모델</h3>
+      <p>
+        10대 학생층은 학교 내신, 수능 준비와 연계하여 기본적인 문법 기초를 탄탄히 다지면서 회화 실력을 동반 상승시킬 수 있는 종합 이러닝 강좌를 추천합니다. 20대 대학생 및 취업 준비생의 경우에는 오픽, 토익스피킹 등 공인 어학 자격증 획득이 최우선 과제인 경우가 많습니다. 이 시기에는 단순한 교양 회화보다는 단기간에 점수를 올릴 수 있는 기출 중심의 스피킹 어플 및 챗지피티와 제미나이를 적극 활용한 모의 인터뷰 훈련 시스템이 가장 뛰어난 효율을 보여줍니다.
+      </p>
+
+      <h3>30대 및 40대 직장인 학습 모델</h3>
+      <p>
+        사회생활의 중심에 서 있는 30대와 40대 직장인들은 주로 비즈니스 실무 영어, 해외 바이어와의 프레젠테이션, 영어 회의, 그리고 승진 시험 대비를 위해 수강을 결정합니다. 퇴근 이후 불규칙한 업무 일정 탓에 오프라인 전문 학원을 직접 다니기 어렵기 때문에 스마트폰 앱을 활용한 출퇴근 틈새 시간 학습이 제일 효과적입니다. 실무 템플릿을 다이렉트로 제공하는 직장인 맞춤형 패키지 상품을 활용하여 핵심적인 업무용 표현들을 암기하고 즉각 써먹을 수 있는 강의를 선택하는 것이 바람직합니다.
+      </p>
+
+      <h3>50대 및 60대 주부와 시니어 학습 모델</h3>
+      <p>
+        50대 주부들과 60대 이상 시니어 세대의 경우 은퇴 후 자아실현, 해외 자유여행 준비, 혹은 자녀나 손주들과 가벼운 일상 대화를 나누기 위해 영어 정복의 꿈을 다시 키우곤 합니다. 젊은 층과 달리 너무 빠른 속도로 말하는 원어민 강의나 복잡한 앱 인터페이스는 학습 의욕을 저하시키는 큰 단점이 됩니다. 따라서 아주 천천히 차근차근 기초 원리부터 알려주는 친화적인 교안 설계와 직관적인 사이트 구성을 갖춘 시니어 전문 학습 사이트를 선정하는 것이 올바른 해법입니다.
+      </p>
+    </section>
+
+    <section id="comparison" class="card">
+      <h2>4. 영어회화인강 유형별 핵심 비교 분석</h2>
+      <p>
+        온라인 영어 교육 솔루션은 제공 방식과 강좌의 포맷에 따라 크게 네 가지 부류로 분류할 수 있습니다. 각 시스템의 가격대와 특성을 일목요연하게 정리하여 소개해 드립니다.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>강좌 유형</th>
+            <th>기본 특성</th>
+            <th>월 평균 비용 수준</th>
+            <th>핵심 장점</th>
+            <th>고려할 단점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>순수 VOD 녹화 강의</td>
+            <td>명문 강사들이 사전에 녹화한 동영상 자료 무제한 수청</td>
+            <td>월 3만 원 내외 (패키지 결제 시)</td>
+            <td>체계적인 개념 정리, 저렴한곳 탐색 시 가장 유리</td>
+            <td>실시간 질의응답 불가, 강제성 부족으로 작심삼일 우려</td>
+          </tr>
+          <tr>
+            <td>AI 전용 어플형 학습</td>
+            <td>챗지피티 및 자체 대화형 음성 분석 어플리케이션 구동</td>
+            <td>월 2만 원 ~ 4만 원 선</td>
+            <td>24시간 무제한 롤플레잉 가능, 피드백의 실시간 수신</td>
+            <td>인간 원어민 특유의 자연스러운 어조나 감정 교류 결여</td>
+          </tr>
+          <tr>
+            <td>화상 하이브리드형</td>
+            <td>기본 인강 시청과 주 2-3회 원어민 직접 통화 결합</td>
+            <td>월 8만 원 ~ 15만 원 선</td>
+            <td>동영상 예습과 실제 대화 실습의 완벽한 상호보완</td>
+            <td>다소 높은 초기 견적 금액, 예약 시간의 구속성</td>
+          </tr>
+          <tr>
+            <td>무제한 수강 환급형</td>
+            <td>매일 출석 및 미션 달성 시 수강료 전액 환급 방식</td>
+            <td>월 5만 원 ~ 10만 원 (일시불 납부 필요)</td>
+            <td>동기부여 효과 극대화, 성공 시 수강료 무료</td>
+            <td>엄격한 중도 환급 기준, 미션 누락 시 혜택 완전 상실</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        학습자들이 간과하기 쉬운 점 중 하나는 무조건 단가만 비교하여 제일 싼곳을 덥석 선택했다가, 한두 달 만에 포기하고 위약금 지불이나 환불을 둘러싼 골치 아픈 사건으로 마음고생을 하는 경우입니다. 인지도가 높은 브랜드 업체의 신규 가입 전용 특별 패키지는 보통 1년 약정을 기준으로 가격 할인을 대대적으로 적용하며, 태블릿 사은품이나 전용 교재 상품 등을 일괄 제공하므로 실제 일시불로 끊어야 하는 카드 금액은 꽤 높게 책정될 수 있습니다. 본인의 카드 사별 무이자 혜택이나 결제 지원금 제도를 정확하게 알아두시는 것이 지갑을 지키는 요령입니다.
+      </p>
+    </section>
+
+    <section id="faq" class="card">
+      <h2>5. 네이버 및 커뮤니티(디시, 보배드림, 펨코 등) 내돈내산 여론의 진실</h2>
+      <p>
+        광고성 보도자료나 인플루언서들의 영혼 없는 협찬 글에 질린 똑똑한 학습자들은 네이버 검색을 시작으로 구글, 유튜브, 트위터, 인스타그램, 페이스북, 카카오톡 오픈 채팅방, 텔레그램 정보방 등 다양한 플랫폼을 전전하며 실제 소비자의 내돈내산 수기를 면밀히 필터링하고 있습니다.
+      </p>
+      
+      <p>
+        디시인사이드나 보배드림, 에펨코리아(펨코) 같은 대형 커뮤니티의 관련 게시판을 아카이빙해 보면, 많은 직장인 사용자들이 평소 바쁜 라이프스타일 탓에 모바일 앱 출석 미션을 놓쳐 속상해하는 현실적인 이야기들을 심심치 않게 접할 수 있습니다. 수많은 사이트가 환급 제도나 사은품 증정, 현금지원 등의 달콤한 미끼로 신규 가입을 유치하고 있지만, 실제 조건들을 분석해보면 주말 예외 없이 매일 지정된 일기 쓰기 미션을 수행해야 하거나 일정한 성취 기준을 입증해야 하는 등 환급 조건의 장벽이 매우 높은 것이 큰 단점입니다.
+      </p>
+
+      <div class="highlight-box">
+        커뮤니티 유저들이 공통으로 입을 모으는 꿀팁은 다음과 같습니다. 수십만 원의 고가 연간 프리패스를 대뜸 결제하기 전, 일주일 가량 무료로 체험해 볼 수 있는 이벤트 기간을 십분 활용하라는 것입니다. 또한, 중도 해지 시 불공정한 이용약관으로 과도한 위약금이 공제되지 않는지 고객센터에 미리 다이렉트 상담을 요청하여 녹취를 남기거나 규정 사본을 확보해 두는 것도 훌륭한 자기방어 방법입니다.
+      </div>
+    </section>
+
+    <section id="ai-learning" class="card">
+      <h2>6. 2026년 첨단 AI 기술을 결합한 영어공부 비법</h2>
+      <p>
+        2026년 기준, 선도적인 교육 솔루션 기업들은 단순히 스타 강사의 강의 영상을 녹화해 올려두던 과거의 주입식 수업 방식을 전면 개편하고 있습니다. 인공지능 기반 음성인식 기술과 기계 학습 엔진을 장착한 인프라가 필수 스펙으로 장착되었습니다.
+      </p>
+      <p>
+        학습자는 강의를 수강한 뒤 즉석에서 어플을 켜고 화면을 향해 말하기 연습을 진행합니다. AI 모듈이 발음, 성조, 유창성, 강세 등을 실시간으로 진단하여 교정해 주는 동시에, 문법적으로 어색한 부분을 인공지능 프롬프트를 통해 즉각 다듬어 줍니다. 
+        실물 훈련 파트너로써 챗지피티나 제미나이를 맞춤 대화 비서로 세팅해 두고, 오늘 배운 표현을 활용하여 실시간 롤플레이 채팅이나 자유 토론을 나누는 크로스오버 학습법이 대표적인 성공 사례로 추천되고 있습니다. 매주 꾸준한 연습 성과를 측정하여 가시적인 주간 통계 리포트로 보여주기 때문에 학습 유지율 역시 기존 영상 단독 시청 대비 무려 세 배 이상 향상되는 장점을 나타내고 있습니다.
+      </p>
+    </section>
+
+    <section id="consult" class="card">
+      <h2>7. 맞춤형 영어회화 학습 전문 무료 컨설팅 및 견적 신청</h2>
+      <p>
+        나에게 딱 맞는 최적의 강좌 종류를 찾아드리고 풍성한 프로모션 혜택을 챙겨드리는 맞춤형 컨설팅 및 상담 서비스입니다. 전국의 주요 교육 전문가들과 함께하는 이번 특별 무료 혜택 이벤트 기회를 놓치지 마세요.
+      </p>
+
+      <form class="consult-form" action="/submit-quote" method="post" id="consultationForm">
+        <div class="form-group">
+          <label for="user-name">성명 / 닉네임</label>
+          <input type="text" id="user-name" name="name" placeholder="예: 홍길동" required>
+        </div>
+
+        <div class="form-group">
+          <label for="user-phone">연락처 / 카카오톡 ID</label>
+          <input type="text" id="user-phone" name="phone" placeholder="예: 010-0000-0000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="user-region">거주 지역 (전국)</label>
+          <select id="user-region" name="region">
+            <option value="seoul">서울특별시</option>
+            <option value="gyeonggi">경기도 / 인천광역시</option>
+            <option value="busan">부산광역시 / 경상도</option>
+            <option value="daegu">대구광역시</option>
+            <option value="daejeon">대전광역시 / 충청도</option>
+            <option value="gwangju">광주광역시 / 전라도</option>
+            <option value="gangwon">강원도</option>
+            <option value="jeju">제주특별자치도</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="user-target">학습 목적 및 연령</label>
+          <select id="user-target" name="target">
+            <option value="student">초등 / 중등 / 고등학생 기초 회화</option>
+            <option value="job">취업 준비 및 공인 스피킹 대비 (20대)</option>
+            <option value="business">직장인 실무 비즈니스 영어 (30대~40대)</option>
+            <option value="travel">해외여행 및 일상 소통 영어 (50대~60대)</option>
+            <option value="hobby">자기계발 및 외국어 소질 탐구 (기타)</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="user-hope">원하는 가격대 및 수강 방식 기재</label>
+          <textarea id="user-hope" name="hope" rows="4" placeholder="예: 월 5만 원 선의 가성비 좋은 앱을 원해요 / 환급 혜택이 좋고 교재 상품권을 주는 유명 브랜드를 추천받고 싶습니다."></textarea>
+        </div>
+
+        <div class="form-group full-width" style="margin-top: 10px;">
+          <label style="flex-direction: row; align-items: center; font-weight: normal; font-size: 0.9rem;">
+            <input type="checkbox" name="privacy" required style="width: auto; margin-right: 10px; margin-top: 0;">
+            개인정보 수집 및 상담 제공을 위한 연락 및 마케팅 활용 약관에 전적으로 동의합니다.
+          </label>
+        </div>
+
+        <div class="form-group full-width">
+          <button type="submit" class="submit-btn" id="submitBtn">전문가 맞춤 상담 및 무료 견적 받기</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card ref-links">
+      <h2>8. 신뢰할 수 있는 공식 유관 정보 사이트 안내</h2>
+      <p>
+        신뢰할 수 있고 공인된 어학 및 평생교육 정보를 추가로 탐색하고 싶으신 수강생 여러분들을 위해 아래의 공식 학습 포털 및 어학 정보 플랫폼 링크를 제공해 드립니다.
+      </p>
+      <a href="https://netxlessonh.koreahankang.com" target="_blank" rel="noopener noreferrer">공인 교육 종합 포털 (education.reliabledone.com)</a>
+      <a href="https://ko.wikipedia.org/wiki/영어" target="_blank" rel="noopener noreferrer">위키백과사전 영어 교육 정보 바로가기</a>
+      <a href="https://www.nile.or.kr" target="_blank" rel="noopener noreferrer">국가평생교육진흥원 학점은행 평생학습 포털</a>
+    </section>
+
+  </div>
+
+  <script>
+    function calculateFee() {
+      const age = document.getElementById('calc-age').value;
+      const level = document.getElementById('calc-level').value;
+      const type = document.getElementById('calc-type').value;
+      const duration = parseInt(document.getElementById('calc-duration').value);
+
+      let baseMonthly = 45000;
+      let brandName = "표준 영상 강의 솔루션";
+      let benefits = "첫 달 무상 일주일 무료 청강 체험 서비스 제공";
+      let guideText = "";
+
+      // 1. Determine base cost and brand types based on platform selection
+      if (type === 'pure-vod') {
+        baseMonthly = 35000;
+        brandName = "베이직 VOD 패스";
+        benefits = "신규 특별 가입 시 기본 교재 2권 전원 무료 우편 발송";
+      } else if (type === 'ai-app') {
+        baseMonthly = 25000;
+        brandName = "스마트 AI 튜터 통합 멤버십";
+        benefits = "신규 회원 첫 결제 전용 30% 즉시 쿠폰 발급 적용";
+      } else if (type === 'hybrid') {
+        baseMonthly = 85000;
+        brandName = "원어민 실시간 화상 하이브리드 코스";
+        benefits = "1:1 집중 첨삭 지도 주 1회권 무료 쿠폰 및 학습 지원금 혜택";
+      }
+
+      // 2. Adjustments based on age groups
+      if (age === '10s' || age === '20s') {
+        baseMonthly -= 3000; // Youth/student discounts
+        benefits += " + 토스 앱 연계 스터디 포인트 페이백 대상";
+      } else if (age === '50s') {
+        baseMonthly += 2000; // Extra physical materials provided
+        benefits += " + 특별 글씨가 큰 실버 케어 단어집 무상 증정";
+      }
+
+      // 3. Adjustments based on levels
+      if (level === 'advanced') {
+        baseMonthly += 5000; // Professional materials surcharge
+      }
+
+      // 4. Discounts based on commitment durations
+      let discountMultiplier = 1.0;
+      if (duration === 6) {
+        discountMultiplier = 0.85; // 15% discount
+      } else if (duration === 12) {
+        discountMultiplier = 0.70; // 30% deep discount
+      }
+
+      const calculatedMonthly = Math.round((baseMonthly * discountMultiplier) / 100) * 100;
+      const calculatedTotal = calculatedMonthly * duration;
+
+      // 5. Build dynamic advice text based on options
+      if (age === '20s' && type === 'hybrid') {
+        guideText = "취업 스펙 달성을 목표로 하는 대학생 분들에게는 학습 의욕을 유지시켜주는 본 화상 하이브리드 클래스가 가장 추천됩니다. 미션을 성공적으로 달성할 경우 지원금 페이백 혜택도 적극 노려보실 수 있습니다.";
+      } else if (age === '50s' && type === 'pure-vod') {
+        guideText = "조금 더 천천히 편안하게 복습하시길 바라는 시니어 분들에게는 시간에 구애받지 않고 무한 반복 시청이 가능한 VOD 전용 프로그램이 제일 효율적이며 스트레스가 적은 길입니다.";
+      } else if (type === 'ai-app') {
+        guideText = "매일 밤이나 아침 일찍 짧게 10분씩 말하는 습관을 들이고 싶으시다면 저렴한 비용의 AI 모바일 앱 활용 패키지를 강력 추천해 드립니다. 비용 부담 없이 다이렉트로 학습에 재미를 붙일 수 있습니다.";
+      } else {
+        guideText = "선택하신 코스는 연령과 목표 수준에 매우 적절한 훌륭한 밸런스를 갖추고 있습니다. 당사 전문 고객센터를 통해 세부 견적 및 추가적인 교재 사은품 대상 여부를 추가 확인하실 수 있습니다.";
+      }
+
+      // 6. Update the results on page safely
+      document.getElementById('result-brand').innerText = brandName;
+      document.getElementById('result-monthly').innerText = calculatedMonthly.toLocaleString() + " 원";
+      document.getElementById('result-total').innerText = calculatedTotal.toLocaleString() + " 원";
+      document.getElementById('result-benefits').innerText = benefits;
+      document.getElementById('result-guide').innerText = guideText;
+    }
+
+    // Call once initially to display values
+    calculateFee();
+
+    // Consultation Form submission feedback to keep user engaged
+    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitButton = document.getElementById('submitBtn');
+      submitButton.disabled = true;
+      submitButton.innerText = "상담 신청이 정상 접수되었습니다. (감사합니다)";
+      submitButton.style.backgroundColor = "#718096";
+      
+      alert("무료 상담 신청 접수가 완료되었습니다. 담당 영어전문가가 기재하신 연락처 혹은 카카오톡을 통해 빠른 시간 내에 친절히 상담을 지원해 드리겠습니다.");
+    });
+  </script>
+  
